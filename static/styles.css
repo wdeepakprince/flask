@@ -1,0 +1,75 @@
+/* styles.css */
+
+body {
+
+font-family: Arial, sans-serif;
+background-color: #F8F9FA;
+
+}
+
+h1 {
+
+text-align: center;
+
+}
+
+h2 {
+
+text-align: center;
+
+}
+
+table {
+  width: 100%; /* Table takes full width of the container */
+  border-collapse: collapse; /* Optional: Removes gaps between cells */
+}
+
+td {
+  width: 25%; /* Each column takes 33.33% of the table width */
+  text-align: center; /* Optional: Centers text */
+}
+
+#flighttable {
+    width: 100%;
+    border: 1px solid #000000;
+  }
+
+#flighttable td {
+  width: 14.28%; /* Each column takes 33.33% of the table width */
+  text-align: center; /* Optional: Centers text */
+}
+
+#bookinghistorytable {
+    width: 100%;
+    border: 1px solid #000000;
+  }
+
+#bookinghistorytable td {
+  width: 16.67%; 
+  text-align: center; /* Optional: Centers text */
+}
+
+#profiletable {
+    width: 100%;
+  }
+
+#profiletable td {
+  width: 33%;
+  text-align: center; /* Optional: Centers text */
+}
+
+#bookingflighttable {
+    width: 100%;
+  }
+
+#bookingflighttable td {
+  width: 25%;
+}
+
+#bookingdetailstable {
+    width: 100%;
+  }
+
+#bookingdetailstable td {
+  width: 25%;
+}
