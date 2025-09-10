@@ -1,0 +1,137 @@
+<html>
+
+<head>
+<title>Profile | BookEasy </title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" >
+    <style>
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+    </style>
+</head>
+
+<body>
+{% for val in profiledata %}
+<br>
+<h1>BookEasy - Ticket Bookings Made Easy</h1>
+<h2>Welcome {{val[2]}} !</h2>
+
+<div style="text-align: right;">
+<a href="/Dashboard/{{val[0]}}"><label >Dashboard</label></a>
+<label > | </label>
+<a href="/DeleteProfile/{{val[0]}}"><label >Delete Account!</label></a>
+</div>
+
+<h2 style="text-align: center;">Edit Profile</h2>
+
+
+<form id="editprofileform" action="/EditProfile/{{val[0]}}" method="post" >
+
+<table id="profiletable" >
+
+
+<tr>
+
+<td>
+</td>
+
+<td>
+<label>Username</label>
+<input type="text" name="usrname" value={{val[0]}} readonly >
+<br><br>
+</td>
+
+<td>
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+</td>
+
+<td>
+<label>Full Name</label>
+<input type="text" name="fullname" value={{val[2]}}>
+<br><br>
+</td>
+
+<td>
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+</td>
+
+<td>
+<label>Password</label>
+<input type="password" name="passwd" value={{val[1]}}>
+<br><br>
+</td>
+
+<td>
+</td>
+
+</tr>
+
+<tr>
+
+<td>
+</td>
+
+<td>
+<label>Email ID</label>
+<input type="email" name="emailID" value={{val[3]}}>
+<br><br><br><br>
+</td>
+
+<td>
+</td>
+
+</tr>
+
+
+<tr>
+
+<td>
+</td>
+
+<td>
+<a href="/EditProfile/{{val[0]}}"><button type="submit" name="editprofilebutton">Edit Profile</button></a>
+</td>
+<br><br>
+
+<td>
+</td>
+
+</tr>
+
+</table>
+<br>
+<div style="text-align: center;">
+    <!-- Display flashed messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+        {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</div>
+</form>
+
+
+
+<div style="text-align: center;">
+<label >© BookEasy Inc. | All Rights Reserved</label>
+</div>
+{% endfor %}
+</body>
+</html>

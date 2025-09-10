@@ -1,0 +1,135 @@
+<html>
+
+<head>
+<title>Dashboard | BookEasy </title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" >
+    <style>
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+    </style>
+</head>
+
+<body>
+<br>
+<h1>BookEasy - Ticket Bookings Made Easy</h1>
+<h2>Welcome {{dashboardfname}} !</h2>
+
+<div style="text-align: right;">
+<a href="/Dashboard/{{dashboarduser}}"><label >Dashboard</label></a>
+<label > | </label>
+<a href="/Profile/{{dashboarduser}}"><label >Edit Profile</label></a>
+<label > | </label>
+<a href="/Home"><label >Logout!</label></a>
+</div>
+
+<h2 style="text-align: left;">Flight Details</h2>
+
+{% for val in flightiddata %}
+
+<table id="bookingflighttable" >
+
+<tr>
+<td>
+<label style="float: right; margin-left: 10px;">From Station</label>
+</td>
+<td>
+<input type="text" name="bookfromstn" style="float: left;" value={{val[1]}} readonly>
+</td>
+<td>
+<label style="float: right; margin-left: 10px;">To Station</label>
+</td>
+<td>
+<input type="text" name="booktostn" style="float: left;" value={{val[2]}} readonly>
+</td>
+</tr>
+
+
+<tr>
+<td>
+<label style="float: right; margin-left: 10px;">From Time</label>
+</td>
+<td>
+<input type="text" name="bookfromtime" style="float: left;" value={{val[3]}} readonly>
+</td>
+<td>
+<label style="float: right; margin-left: 10px;">To Time</label>
+</td>
+<td>
+<input type="text" name="booktotime" style="float: left;" value={{val[4]}} readonly>
+</td>
+</tr>
+
+
+<tr>
+<td>
+<label style="float: right; margin-left: 10px;">Flight #</label>
+</td>
+<td>
+<input type="text" name="bookflightid" style="float: left;" value={{val[0]}} readonly>
+</td>
+<td>
+<label style="float: right; margin-left: 10px;">Ticket Cost (Rs.)</label>
+</td>
+<td>
+<input type="text" name="booktktcost" style="float: left;" value={{val[5]}} readonly>
+</td>
+</tr>
+
+</table>
+
+<h2 style="text-align: left;">Choose the Booking details below!</h2>
+
+
+<form id="bookingdetailsform" action="/Booking/{{dashboarduser}}/FlightID/{{val[0]}}/Success" method="post">
+
+<table id="bookingdetailstable">
+
+<tr>
+<td>
+<label style="float: right; margin-left: 10px;">Travel Date</label>
+</td>
+<td>
+<input type="date" name="booktraveldate" style="float: left;"  >
+</td>
+<td>
+<label style="float: right; margin-left: 10px;"># of Passengers</label>
+</td>
+<td>
+<input type="number" name="bookpassengercount" style="float: left;" value=1 >
+</td>
+</tr>
+
+</table>
+
+<br><br>
+
+<div style="text-align: center;">
+<button type="submit" name="bookbutton" style="width: 200px; height: 35px; font-size: 20px; font-weight: bold;background-color: #25be4f;">Book Now!</button>
+</div>
+
+</form>
+{% endfor %}
+
+
+<br><br>
+<div style="text-align: center;">
+    <!-- Display flashed messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+        {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+</div>
+<br><br>
+
+<div style="text-align: center;">
+<label >© BookEasy Inc. | All Rights Reserved</label>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<html>
+
+<head>
+<title>Dashboard | BookEasy </title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" >
+</head>
+
+<body>
+<br>
+<h1>BookEasy - Ticket Bookings Made Easy</h1>
+<h2>Welcome {{dashboardfname}} !</h2>
+
+<div style="text-align: right;">
+<a href="/Profile/{{dashboarduser}}"><label >Edit Profile</label></a>
+<label > | </label>
+<a href="/Home"><label >Logout!</label></a>
+</div>
+
+<h2 style="text-align: left;">Flight Details Dashboard</h2>
+
+
+<table id="flighttable" border=1>
+
+<tr>
+<th>Flight #</th>
+<th>From Station</th>
+<th>To Station</th>
+<th>Departure Time</th>
+<th>Arrival Time</th>
+<th>Ticket Cost</th>
+<th>Action</th>
+
+</tr>
+{% for val in flightdata %}
+<tr>
+<td>{{val[0]}}</td>
+<td>{{val[1]}}</td>
+<td>{{val[2]}}</td>
+<td>{{val[3]}}</td>
+<td>{{val[4]}}</td>
+<td>{{val[5]}}</td>
+<td><a href="/Booking/{{dashboarduser}}/FlightID/{{val[0]}}"><button type="button" name={{val[0]}} style="background-color: #25be4f;">Book Now!</button></a></td>
+
+</tr>
+{% endfor %}
+</table>
+
+
+<br>
+
+<h2 style="text-align: left;">My Bookings</h2>
+<table id="bookinghistorytable" border=1>
+<tr>
+<th>Booking ID</th>
+<th>Flight #</th>
+<th>Travel Date</th>
+<th># of Tickets </th>
+<th>Total Price</th>
+<th>Ticket Status</th>
+
+</tr>
+{% for val in bookingdata %}
+<tr>
+<td>{{val[0]}}</td>
+<td>{{val[1]}}</td>
+<td>{{val[2]}}</td>
+<td>{{val[3]}}</td>
+<td>{{val[4]}}</td>
+<td>{{val[5]}}</td>
+
+</tr>
+{% endfor %}
+</table>
+
+<br>
+
+<div style="text-align: center;">
+<label >© BookEasy Inc. | All Rights Reserved</label>
+</div>
+
+</body>
+</html>

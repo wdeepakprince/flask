@@ -1,0 +1,113 @@
+<html>
+
+<head>
+<title>Sign Up | BookEasy </title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" >
+    <style>
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+    </style>
+</head>
+
+<body>
+<br>
+<h1>BookEasy - Ticket Bookings Made Easy</h1>
+<h2>Create Your Account</h2>
+<br><br>
+
+<table>
+<tr>
+
+<td>
+</td>
+
+
+<td>
+<a href="./home">
+<img src="{{ url_for('static', filename='logo.png') }}" alt="BookEasy Logo" width="300" height="300">
+</a>
+</td>
+
+
+<td>
+<form id="signup" action="./CreateAccount" method="post" >
+
+<fieldset>
+<legend>User Details</legend>
+
+<br>
+
+<table id="signuptable">
+<tr>
+<td>
+<label>Full Name</label>
+<input type="text" name="fullname">
+<br><br>
+</td>
+</tr>
+
+<tr>
+<td>
+<label>Username</label>
+<input type="text" name="usrname">
+<br><br>
+</td>
+</tr>
+
+<tr>
+<td>
+<label>Password</label>
+<input type="password" name="passwd">
+<br><br>
+</td>
+</tr>
+
+<tr>
+<td>
+<label>Email ID</label>
+<input type="email" name="emailID">
+<br><br>
+</td>
+</tr>
+
+</table>
+<br>
+
+    <!-- Display flashed messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+        {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+<br>
+<button type="submit" name="signup">Sign Up</button>
+<button type="reset" name="clear">Clear</button>
+
+<br><br>
+
+<a href="./Home"> <label>Sign In?</label> </a><br>
+
+</fieldset>
+</form>
+</td>
+
+<td>
+</td>
+
+</tr>
+</table>
+
+<br><br>
+
+<div style="text-align: center;">
+<label >© BookEasy Inc. | All Rights Reserved</label>
+</div>
+
+</body>
+</html>

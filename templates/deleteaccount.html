@@ -1,0 +1,48 @@
+<html>
+
+<head>
+<title>Profile | BookEasy </title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" >
+    <style>
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+    </style>
+</head>
+
+<body>
+{% for val in delprofiledata %}
+<br>
+<h1>BookEasy - Ticket Bookings Made Easy</h1>
+<h2>Welcome {{val[2]}} !</h2>
+
+<div style="text-align: right;">
+<a href="/Dashboard/{{val[0]}}"><label >Dashboard</label></a>
+<label > | </label>
+<a href="/Profile/{{val[0]}}"><label >Edit Profile</label></a>
+</div>
+
+<h2 style="text-align: center;color: red;">Delete Account?</h2>
+
+<br><br>
+
+<form id="deleteprofileform" action="/AccountDeleted/{{val[0]}}" method="post" >
+
+<div style="text-align: center;">
+<a href="/AccountDeleted/{{val[0]}}"><button type="submit" name="deleteprofilebutton">Yes, Delete Account</button></a>
+<a href="/Dashboard/{{val[0]}}"><button type="button" name="returntodashboardbutton">Cancel</button></a>
+</div>
+
+<br>
+<br>
+
+</form>
+
+<br><br>
+
+<div style="text-align: center;">
+<label >© BookEasy Inc. | All Rights Reserved</label>
+</div>
+{% endfor %}
+</body>
+</html>
