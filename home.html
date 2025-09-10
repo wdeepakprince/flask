@@ -1,0 +1,103 @@
+<html>
+
+<head>
+<title>BookEasy | Ticket Bookings Made Easy</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" >
+    <style>
+        .success { color: green; font-weight: bold; }
+        .error { color: red; font-weight: bold; }
+    </style>
+</head>
+
+<body>
+<br>
+<h1>BookEasy</h1>
+<h2>Ticket Bookings Made Easy</h2>
+<br><br>
+
+<table>
+<tr>
+
+<td>
+</td>
+
+
+<td>
+<a href="/Home">
+<img src="{{ url_for('static', filename='logo.png') }}" alt="BookEasy Logo" width="300" height="300">
+</a>
+</td>
+
+
+<td>
+<form id="login" action="./ValidateLogin" method="post" >
+
+<fieldset>
+<legend>Login</legend>
+
+<br>
+
+<table id="logintable">
+<tr>
+<td>
+<label>Username</label>
+<input type="text" name="uname">
+<br><br>
+</td>
+</tr>
+
+
+
+<tr>
+<td>
+<label>Password</label>
+<input type="password" name="pwd">
+</td>
+</tr>
+</table>
+<br>
+
+    <!-- Display flashed messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <ul>
+        {% for category, message in messages %}
+          <li class="{{ category }}">{{ message }}</li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+
+<br>
+
+<a href="./Dashboard">
+<button type="submit" name="login">Login</button>
+</a>
+<button type="reset" name="clear">Clear</button>
+
+
+<br><br>
+
+<a href="./Signup"> <label>Sign Up?</label> </a><br>
+
+</fieldset>
+</form>
+</td>
+
+<td>
+</td>
+
+</tr>
+</table>
+
+<br><br>
+
+<div style="text-align: center;">
+<label >© BookEasy Inc. | All Rights Reserved</label>
+</div>
+
+
+
+</body>
+</html>
